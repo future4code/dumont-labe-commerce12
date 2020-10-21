@@ -10,7 +10,7 @@ function App() {
     <div className="App">
         <Carrinho totalValor='500'>
           <ItemCarrinho
-            nomeItem={this.}
+            nomeItem='Capa'
             quantidade='14'
             valorItem='200'
             onDeleteClick=''
