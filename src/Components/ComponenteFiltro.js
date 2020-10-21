@@ -1,10 +1,11 @@
 import React from "react"
 import styled from "styled-components"
+import {DivStyled, Title} from './Carrinho/Carrinho'
 
 function ComponenteFiltro(props){
 
-    return <div>
-        <h1>Filtros:</h1>
+    return (<DivStyled>
+        <Title>Filtros:</Title>
          {/* formulário de busca  */}
         <form>
             <label>
@@ -22,7 +23,8 @@ function ComponenteFiltro(props){
                 <input type="text" onChange={props.onChangeBuscarProduto}/>
             </label>
         </form>
-    </div>
+    </DivStyled>
+    )
 
 }
 export default ComponenteFiltro
