@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ComponenteFiltro from './Components/ComponenteFiltro'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends React.Component {
+
+  //controla a entrada do valor minimo
+  onchangeInputMinimo = (event) => {
+    console.log (event.target.value)
+  }
+  //controla a entrada do valor máximo
+  onChangeInputMaximo = (event) => {
+    console.log (event.target.value)
+  }
+  //controla a entrada da busca do produto
+  onChangeInputProduto = (event) => {
+    console.log (event.target.value)
+  }
+
+  render() {
+  return ( <div className="App">
+      <ComponenteFiltro
+        onChangeValorMinimo = {this.onchangeInputMinimo}
+        onChangeValorMaximo = {this.onChangeInputMaximo}
+        onChangeBuscarProduto = {this.onChangeInputProduto}
+      />
+    
     </div>
   );
+  }
 }
 
 export default App;
