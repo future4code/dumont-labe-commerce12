@@ -48,9 +48,28 @@ export default class App extends Component {
       const itemToAddArray = this.state.produtos.filter(produto=>{
         return produto.produtoNome === nomeProduto
       })
+
+      //variavel pra checkar se o produto ja existe dentro do array.
+      let exite = false
       const itemToAddObjeto= itemToAddArray[0]
 
-      const objetoItemCarrinho= {...itemToAddObjeto,
+      //forEach pra passar pelo array carrinho e um a um checar se ja existe la dentro,
+      // se sim ele muda a variavel exixte para true.
+      this.state.carrinho.forEach(item=>{
+
+        if(item.produtoNome === itemToAddObjeto.produtoNome){
+          item.quantidade++
+          const total = this.state.totalCompra + itemToAddObjeto.valorProduto
+          this.setState ({
+            totalCompra: total
+          })
+
+          exite = true
+          
+        }
+      })
+      if(!exite){
+         const objetoItemCarrinho= {...itemToAddObjeto,
         quantidade: 1,
         id: id
       }
@@ -62,6 +81,8 @@ export default class App extends Component {
         carrinho: novoCarrinho,
         totalCompra: total
       })
+      }
+     
      
   }
 
@@ -69,17 +90,49 @@ export default class App extends Component {
     const itemToRemove = this.state.carrinho.filter(produto=>{
       return produto.id === id
     })
+    const itemToRemoveObj= itemToRemove[0]
+    let existe = false
+    this.state.carrinho.forEach(item=>{
+
+      if(item.id === itemToRemoveObj.id){
+        if(item.quantidade > 1){
+
+          item.quantidade --
+  
+          const total = this.state.totalCompra - itemToRemoveObj.valorProduto
+  
+          this.setState ({
+            totalCompra: total
+          })
+          existe = true
+        }else{
+          const novoCarrinho = this.state.carrinho.filter(produto => {
+            return produto.id !== id
+            
+           })
+       
+           const total = this.state.totalCompra - itemToRemoveObj.valorProduto
+           this.setState ({
+             carrinho: novoCarrinho,
+             totalCompra: total
+           }) 
+           existe = true
+         }
+        }
+      }
+    )
     const novoCarrinho = this.state.carrinho.filter(produto => {
      return produto.id !== id
      
     })
-    const itemToRemoveObj= itemToRemove[0]
-    const total = this.state.totalCompra - itemToRemoveObj.valorProduto
-    this.setState ({
-      carrinho: novoCarrinho,
-      totalCompra: total
-    })
+    if(!existe){
+      const total = this.state.totalCompra - itemToRemoveObj.valorProduto
+      this.setState ({
+        carrinho: novoCarrinho,
+        totalCompra: total
+      })
     
+    }
   }
 
 
