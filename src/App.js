@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import Carrinho, { Title } from './Components/Carrinho/Carrinho';
 import ItemCarrinho from './Components/Carrinho/ItemCarrinho';
 import ComponenteFiltro from './Components/ComponenteFiltro';
-
 import styled from 'styled-components'
 import HomeDiv from './Components/HomeDiv/HomeDiv';
 import CardProduto from './Components/CardProduto/CardProduto';
 
+//imagens de satelites antigos
+import sateliteAdeos from './Img/satelites-antigos/Adeos2.png'
+import sateliteCbers from './Img/satelites-antigos/CBERS.png'
+import sateliteHXMT from './Img/satelites-antigos/HXMT.png'
+import sateliteIRAS from './Img/satelites-antigos/IRAS.png'
+import sateliteNimbus2 from './Img/satelites-antigos/Nimbus-2.png'
+import sateliteNimbus from './Img/satelites-antigos/Nimbus.png'
+import sateliteAntigo from './Img/satelites-antigos/satelite-antigo1.png'
+import sateliteSES from './Img/satelites-antigos/SES-14.png'
 
 const MainDiv = styled.div`
         display: flex;
@@ -37,33 +45,43 @@ export default class App extends Component {
     valorBusca: '',
     produtos: [
       {
-        produtoNome: 'item 5',
-        urlImagem: 'https://picsum.photos/200/300',
-        valorProduto: 40
+        produtoNome: 'Cebers',
+        urlImagem: sateliteCbers,
+        valorProduto: 12000
       },
       {
-        produtoNome: 'item 4',
-        urlImagem: 'https://picsum.photos/200/301',
+        produtoNome: 'Adeos',
+        urlImagem: sateliteAdeos ,
         valorProduto: 120
       },
       {
-        produtoNome: 'item 3',
-        urlImagem: 'https://picsum.photos/200/302',
+        produtoNome: 'HXMT',
+        urlImagem: sateliteHXMT,
         valorProduto: 400
       },
       {
-        produtoNome: 'item 2',
-        urlImagem: 'https://picsum.photos/200/300',
+        produtoNome: 'IRAS',
+        urlImagem: sateliteIRAS,
         valorProduto: 300
       },
       {
-        produtoNome: 'item 6',
-        urlImagem: 'https://picsum.photos/200/301',
+        produtoNome: 'Nimbus',
+        urlImagem: sateliteNimbus,
         valorProduto: 235
       },
       {
-        produtoNome: 'item 7',
-        urlImagem: 'https://picsum.photos/200/302',
+        produtoNome: 'Nimbus-2',
+        urlImagem: sateliteNimbus2,
+        valorProduto: 56
+      },
+      {
+        produtoNome: 'AX86',
+        urlImagem: sateliteAntigo,
+        valorProduto: 56
+      },
+      {
+        produtoNome: 'SES',
+        urlImagem: sateliteSES,
         valorProduto: 56
       }
     ],

@@ -7,18 +7,19 @@ const DivStyled2 = styled.nav`
     align-items: center;
     justify-content: space-between;
     width: 97%;
-    box-shadow: 0px 0px 5px 0px;
+    /* box-shadow: 0px 0px 5px 0px; */
     padding-left: 20px;
     padding-right: 20px;
     background-color: #F5F4F4;
 `
 const MyInput = styled.input`
+    
     outline: none;
     border: 0.1px solid #91BFCA;
     margin: 10px;
     height: 30px;
     border-radius: 5px;
-    box-shadow: 0px 0px 3px 0px;
+    /* box-shadow: 0px 0px 3px 0px; */
     font-family: sans-serif;
     font-size: 14px;
 `
@@ -41,25 +42,30 @@ function ComponenteFiltro(props){
     <DivStyled2>
         <MainTitle>Lab-AstroCommerce</MainTitle>
          <div>  
-                <MyLabel htmlFor="minimo">Min</MyLabel>
-                <MyInputNumber 
+            <MyInput type="text" onChange={props.onChangeBuscarProduto}
+                placeholder='Buscar por nome'
+                value={props.valorBusca}
+            />
+            <MyLabel htmlFor="minimo">Min</MyLabel>
+            <MyInputNumber 
                 id='minimo'
                 type="number" min="0" 
                 onChange={props.onChangeValorMinimo}
-                value={props.valorMinimo}/>
+                value={props.valorMinimo}
+            />
 
-                <MyLabel htmlFor="Max">Max</MyLabel>
-                <MyInputNumber 
+            <MyLabel htmlFor="Max">
+                Max
+            </MyLabel>
+
+            <MyInputNumber 
                 id='Max'
                 type="number" min="0"
                 onChange={props.onChangeValorMaximo}
                 value={props.valorMaximo}
-                 />
-        
-                <MyInput type="text" onChange={props.onChangeBuscarProduto}
-                placeholder='Buscar por nome'
-                value={props.valorBusca}
                 />
+        
+                
          </div>
     </DivStyled2>
     )

@@ -8,13 +8,13 @@ export const DivStyled = styled.div`
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-start;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width:400px;
     max-width: 400px;
     height: max-content;
     align-self: flex-start;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px;
+    /* box-shadow: 0px 0px 5px 0px; */
     
 `
 export const ListaStyled = styled.ul`
