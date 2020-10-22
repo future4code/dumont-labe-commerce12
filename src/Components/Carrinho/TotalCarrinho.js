@@ -8,6 +8,9 @@ const TotalDvi = styled.div`
     align-items: center;
     justify-content: space-evenly;
     justify-self: flex-end;
+    align-self: flex-end;
+    margin-top: 80%;
+    margin-right: 20px;
 `
 
 export default function TotalCarrinho (props){
