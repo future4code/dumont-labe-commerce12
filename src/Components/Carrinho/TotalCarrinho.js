@@ -9,7 +9,7 @@ const TotalDvi = styled.div`
     justify-content: space-evenly;
     justify-self: flex-end;
     align-self: flex-end;
-    margin-top: 80%;
+    margin-top: 10px;
     margin-right: 20px;
 `
 

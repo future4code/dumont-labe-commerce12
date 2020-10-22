@@ -6,10 +6,10 @@ const DivProduts = styled.div`
 
     display: flex;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-flow: row wrap;
     width: 80%;
-    height: 70vh;
+    height: 80vh;
 `
 
 

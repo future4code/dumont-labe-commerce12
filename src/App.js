@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Carrinho from './Components/Carrinho/Carrinho';
+import Carrinho, { Title } from './Components/Carrinho/Carrinho';
 import ItemCarrinho from './Components/Carrinho/ItemCarrinho';
 import ComponenteFiltro from './Components/ComponenteFiltro';
 
@@ -12,7 +12,20 @@ const MainDiv = styled.div`
         display: flex;
         align-items: center;
         padding: 10px;
+        background-color: #E2DFDF;
         
+`
+const ButtonKart = styled.button`
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  outline: none;
+  border: 1px solid grey;
+  height: 120px;
+  width: 120px;
+  border-radius: 120px;
+  cursor: pointer;
+
 `
 
 let id = 0
@@ -37,10 +50,26 @@ export default class App extends Component {
         produtoNome: 'item 3',
         urlImagem: 'https://picsum.photos/200/302',
         valorProduto: 400
+      },
+      {
+        produtoNome: 'item 2',
+        urlImagem: 'https://picsum.photos/200/300',
+        valorProduto: 300
+      },
+      {
+        produtoNome: 'item 6',
+        urlImagem: 'https://picsum.photos/200/301',
+        valorProduto: 235
+      },
+      {
+        produtoNome: 'item 7',
+        urlImagem: 'https://picsum.photos/200/302',
+        valorProduto: 56
       }
     ],
     carrinho: [],
-    totalCompra: 0
+    totalCompra: 0,
+    showKart: false
   }
   
   adicionarCarrinho =(nomeProduto) =>{
@@ -48,9 +77,28 @@ export default class App extends Component {
       const itemToAddArray = this.state.produtos.filter(produto=>{
         return produto.produtoNome === nomeProduto
       })
+
+      //variavel pra checkar se o produto ja existe dentro do array.
+      let exite = false
       const itemToAddObjeto= itemToAddArray[0]
 
-      const objetoItemCarrinho= {...itemToAddObjeto,
+      //forEach pra passar pelo array carrinho e um a um checar se ja existe la dentro,
+      // se sim ele muda a variavel exixte para true.
+      this.state.carrinho.forEach(produto=>{
+
+        if(produto.produtoNome === itemToAddObjeto.produtoNome){
+          produto.quantidade++
+          const total = this.state.totalCompra + itemToAddObjeto.valorProduto
+          this.setState ({
+            totalCompra: total
+          })
+
+          exite = true
+          
+        }
+      })
+      if(!exite){
+         const objetoItemCarrinho= {...itemToAddObjeto,
         quantidade: 1,
         id: id
       }
@@ -62,6 +110,8 @@ export default class App extends Component {
         carrinho: novoCarrinho,
         totalCompra: total
       })
+      }
+     
      
   }
 
@@ -69,24 +119,71 @@ export default class App extends Component {
     const itemToRemove = this.state.carrinho.filter(produto=>{
       return produto.id === id
     })
+    const itemToRemoveObj= itemToRemove[0]
+    let existe = false
+    this.state.carrinho.forEach(item=>{
+
+      if(item.id === itemToRemoveObj.id){
+        if(item.quantidade > 1){
+
+          item.quantidade -- 
+          //subitraindo
+  
+          const total = this.state.totalCompra - itemToRemoveObj.valorProduto
+  
+          this.setState ({
+            totalCompra: total
+          })
+          existe = true
+        }else{
+          const novoCarrinho = this.state.carrinho.filter(produto => {
+            return produto.id !== id
+            
+           })
+       
+           const total = this.state.totalCompra - itemToRemoveObj.valorProduto
+           this.setState ({
+             carrinho: novoCarrinho,
+             totalCompra: total
+           }) 
+           existe = true
+         }
+        }
+      }
+    )
     const novoCarrinho = this.state.carrinho.filter(produto => {
      return produto.id !== id
      
     })
-    const itemToRemoveObj= itemToRemove[0]
-    const total = this.state.totalCompra - itemToRemoveObj.valorProduto
-    this.setState ({
-      carrinho: novoCarrinho,
-      totalCompra: total
-    })
+    if(!existe){
+      const total = this.state.totalCompra - itemToRemoveObj.valorProduto
+      this.setState ({
+        carrinho: novoCarrinho,
+        totalCompra: total
+      })
     
+    }
   }
 
 
+
   render(){
-    console.log(this.state.carrinho)
+    
     // array dos produtos renerizados sem filtrar
-    let arrayProdutos = this.state.produtos.map((produto)=>{
+    let arrayProdutosFiltadros = this.state.produtos.filter((produto)=>{
+      const valorNome= this.state.valorBusca === ''? produto.produtoNome: this.state.valorBusca
+      const valorMaximo= this.state.valorMaximo === ''? Infinity: this.state.valorMaximo
+        if(produto.valorProduto <= this.state.valorMinimo || produto.valorProduto >= valorMaximo || produto.produtoNome !==  valorNome ){
+          
+            return false
+          } else{
+              return true
+            }
+        
+        
+   })
+
+    let arrayProdutos = arrayProdutosFiltadros.map((produto)=>{
      
       return <CardProduto
       key={produto.produtoNome}
@@ -110,8 +207,8 @@ export default class App extends Component {
         
       )
     })
-    return (
-      <MainDiv>
+    return (<div>
+
         <ComponenteFiltro
           onChangeValorMinimo={event => this.setState({valorMinimo: event.target.value})}
           valorMinimo={this.state.valorMinimo}
@@ -122,15 +219,21 @@ export default class App extends Component {
           onChangeBuscarProduto={event => this.setState({valorBusca: event.target.value})}
           valorBusca={this.state.valorBusca}
         />
+      <MainDiv>
   
         <HomeDiv 
           produtos={arrayProdutos}
         
         />
-          <Carrinho totalValor={this.state.totalCompra}>
+          <Carrinho
+          display={this.state.showKart}
+           totalValor={this.state.totalCompra}>
             {arrayCarrinho}
           </Carrinho>
+          
       </MainDiv>
+      <ButtonKart onClick={()=> this.setState({showKart: !this.state.showKart})}>Carrinho</ButtonKart>
+    </div>
     );
   }
 }
