@@ -5,11 +5,12 @@ import styled from 'styled-components'
 const DivProduts = styled.div`
 
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     flex-flow: row wrap;
     width: 80%;
     height: 80vh;
+    
 `
 
 

@@ -9,17 +9,17 @@ const CardDiv = styled.div`
     background-color: white;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 4px;
-    box-shadow: 0px 0px 5px 0px;
-    padding: 0px;
+    /* box-shadow: 0px 0px 5px 0px; */
+    padding: 30px;
     margin: 5px;
     width: 230px;
     height: max-content;
-    &:hover{
+    /* &:hover{
         width: 235px;
-        height: 300px;
-    }
+        height: 350px;
+    } */
 `
 const SimpleDiv = styled.div`
     display: flex;
@@ -30,10 +30,11 @@ const SimpleDiv = styled.div`
 `
 
 const ItemImagem = styled.img`
+    margin-top: -30px;
     margin-bottom: 5px;
     border-radius: 4px;
-    width: 95%;
-    height: 180px;
+    width: 280px;
+    height: 250px;
     border: 5px solid white;
 
 `
