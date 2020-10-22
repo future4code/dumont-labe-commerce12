@@ -8,7 +8,7 @@ export const DivStyled = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     border: 1px solid black;
-    width: 25%;
+    width: 400px;
     max-width: 400px;
     height: 70vh;
     margin: 30px;

@@ -4,25 +4,33 @@ import {DivStyled, Title} from './Carrinho/Carrinho'
 
 function ComponenteFiltro(props){
 
-    return (<DivStyled>
+    return (
+    <DivStyled>
         <Title>Filtros:</Title>
          {/* formulário de busca  */}
-        <form>
+        <>
             <label>
                 Valor Mínimo
-                <input type="number" min="0" onChange={props.onChangeValorMinimo}/>
+                <input type="number" min="0" 
+                onChange={props.onChangeValorMinimo}
+                value={props.valorMinimo}/>
             </label>
 
             <label>
                 Valor Máximo
-                <input type="number" min="0" onChange={props.onChangeValorMaximo} />
+                <input type="number" min="0" 
+                onChange={props.onChangeValorMaximo}
+                value={props.valorMaximo}
+                 />
             </label>
 
             <label>
                 Buscar Produto
-                <input type="text" onChange={props.onChangeBuscarProduto}/>
+                <input type="text" onChange={props.onChangeBuscarProduto}
+                value={props.valorBusca}
+                />
             </label>
-        </form>
+        </>
     </DivStyled>
     )
 
