@@ -61,7 +61,7 @@ const CardProduto = props =>{
             <p>{props.nomeItem}</p>
             <p>Valor: <b>{props.valorItem}</b>R$</p>
             </SimpleDiv>
-            <AddButton onClick={props.AddToBasket}>Adicionar ao Carrinho</AddButton>
+            <AddButton onClick={props.addToBasket}>Adicionar ao Carrinho</AddButton>
         </CardDiv>
     )
 }

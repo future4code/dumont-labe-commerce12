@@ -15,6 +15,7 @@ const MainDiv = styled.div`
         
 `
 
+let id = 0
 export default class App extends Component {
 
   state= {
@@ -37,21 +38,78 @@ export default class App extends Component {
         urlImagem: 'https://picsum.photos/200/302',
         valorProduto: 400
       }
-    ]
+    ],
+    carrinho: [],
+    totalCompra: 0
+  }
+  
+  adicionarCarrinho =(nomeProduto) =>{
+    //pegando o produto da lista de produto
+      const itemToAddArray = this.state.produtos.filter(produto=>{
+        return produto.produtoNome === nomeProduto
+      })
+      const itemToAddObjeto= itemToAddArray[0]
+
+      const objetoItemCarrinho= {...itemToAddObjeto,
+        quantidade: 1,
+        id: id
+      }
+      id++
+      const total = this.state.totalCompra + itemToAddObjeto.valorProduto
+
+      const novoCarrinho = [...this.state.carrinho, objetoItemCarrinho]
+      this.setState ({
+        carrinho: novoCarrinho,
+        totalCompra: total
+      })
+     
+  }
+
+  onRemoveCarrinho = (id)=>{
+    const itemToRemove = this.state.carrinho.filter(produto=>{
+      return produto.id === id
+    })
+    const novoCarrinho = this.state.carrinho.filter(produto => {
+     return produto.id !== id
+     
+    })
+    const itemToRemoveObj= itemToRemove[0]
+    const total = this.state.totalCompra - itemToRemoveObj.valorProduto
+    this.setState ({
+      carrinho: novoCarrinho,
+      totalCompra: total
+    })
+    
   }
 
 
   render(){
+    console.log(this.state.carrinho)
     // array dos produtos renerizados sem filtrar
-    let arrayProdutos = this.state.produtos.map(produto=>{
+    let arrayProdutos = this.state.produtos.map((produto)=>{
      
-      return <CardProduto key={produto.produtoNome}
+      return <CardProduto
+      key={produto.produtoNome}
       urlImagem={produto.urlImagem}
       nomeItem={produto.produtoNome}
       valorItem={produto.valorProduto}
+      addToBasket={()=> this.adicionarCarrinho(produto.produtoNome)}
       />
     })
-
+    let arrayCarrinho =this.state.carrinho.map((produto) =>{
+      return (
+        
+        <ItemCarrinho
+          key={produto.id}
+          id={produto.id}
+          quantidade={produto.quantidade}
+          nomeItem={produto.produtoNome}
+          valorItem={produto.valorProduto}
+          onDeleteClick={() => this.onRemoveCarrinho(produto.id)}
+        />
+        
+      )
+    })
     return (
       <MainDiv>
         <ComponenteFiltro
@@ -69,20 +127,8 @@ export default class App extends Component {
           produtos={arrayProdutos}
         
         />
-          <Carrinho totalValor='500'>
-            <ItemCarrinho
-              nomeItem='Capa'
-              quantidade='14'
-              valorItem='200'
-              onDeleteClick=''
-              
-            />
-            <ItemCarrinho
-              nomeItem='Capa'
-              quantidade='14'
-              valorItem='200'
-              onDeleteClick=''
-           />
+          <Carrinho totalValor={this.state.totalCompra}>
+            {arrayCarrinho}
           </Carrinho>
       </MainDiv>
     );
