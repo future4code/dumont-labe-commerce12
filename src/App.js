@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import Carrinho from './Components/Carrinho/Carrinho';
 import ItemCarrinho from './Components/Carrinho/ItemCarrinho';
 import ComponenteFiltro from './Components/ComponenteFiltro';
-import binImg from './Img/delete_outline-24px.svg'
 
 import styled from 'styled-components'
-import HomeDiv from './Components/Carrinho/HomeDiv/HomeDiv';
+import HomeDiv from './Components/HomeDiv/HomeDiv';
 import CardProduto from './Components/CardProduto/CardProduto';
 
 
@@ -24,19 +23,19 @@ export default class App extends Component {
     valorBusca: '',
     produtos: [
       {
-        produtoNome: 'capa',
+        produtoNome: 'item 5',
         urlImagem: 'https://picsum.photos/200/300',
         valorProduto: 40
       },
       {
-        produtoNome: 'capa',
-        urlImagem: 'https://picsum.photos/200/300',
-        valorProduto: 40
+        produtoNome: 'item 4',
+        urlImagem: 'https://picsum.photos/200/301',
+        valorProduto: 120
       },
       {
-        produtoNome: 'capa',
-        urlImagem: 'https://picsum.photos/200/300',
-        valorProduto: 40
+        produtoNome: 'item 3',
+        urlImagem: 'https://picsum.photos/200/302',
+        valorProduto: 400
       }
     ]
   }
