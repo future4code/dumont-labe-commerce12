@@ -97,7 +97,8 @@ export default class App extends Component {
       if(item.id === itemToRemoveObj.id){
         if(item.quantidade > 1){
 
-          item.quantidade --
+          item.quantidade -- 
+          //subitraindo
   
           const total = this.state.totalCompra - itemToRemoveObj.valorProduto
   
