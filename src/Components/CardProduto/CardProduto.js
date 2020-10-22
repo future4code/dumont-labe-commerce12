@@ -6,18 +6,19 @@ const CardDiv = styled.div`
 
     display: flex;
     flex-direction: column;
+    background-color: white;
     align-items: center;
     justify-content: space-between;
     border: 1px solid black;
     border-radius: 4px;
     box-shadow: 0px 0px 5px 0px;
     padding: 0px;
-    margin: 10px;
-    width: 180px;
-    height: 200px;
+    margin: 5px;
+    width: 230px;
+    height: max-content;
     &:hover{
-        width: 185px;
-        height: 205px;
+        width: 235px;
+        height: 300px;
     }
 `
 const SimpleDiv = styled.div`
@@ -30,22 +31,24 @@ const SimpleDiv = styled.div`
 
 const ItemImagem = styled.img`
     margin-bottom: 5px;
-    border-radius: 4px 0px;
-    width: 100%;
-    height: 50%;
+    border-radius: 4px;
+    width: 95%;
+    height: 180px;
+    border: 5px solid white;
 
 `
 const AddButton = styled.button`
-    background-color: black;
+    background-color: #1C869B;
     color: whitesmoke;
     font-family: sans-serif;
     font-weight: bold;
     width: 90%;
     height: 30px;
+    margin: 10px;
     outline: none;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 10px;
     &:hover{
         background-color: tomato;
     }
