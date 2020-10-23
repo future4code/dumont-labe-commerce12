@@ -329,6 +329,7 @@ export default class App extends Component {
           nomeItem={produto.produtoNome}
           valorItem={produto.valorProduto}
           onDeleteClick={() => this.onRemoveCarrinho(produto.id)}
+          addItem={()=> this.adicionarCarrinho(produto.produtoNome)}
         />
         
       )

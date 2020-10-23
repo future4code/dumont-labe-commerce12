@@ -28,6 +28,13 @@ const DeletButton = styled.button`
         background-color: #f35b40;
     }
 `
+const AddButton = styled(DeletButton)`
+    background-color: #64d364;
+    padding: 8px;
+    &:hover{
+        background-color:  #59be59;
+    }
+`
 const ImgBin = styled.img`
     height: 20px;
     width: 24px;
@@ -40,9 +47,11 @@ export default function ItemCarrinho (props){
         <>
             <Item>{props.quantidade}x : {props.nomeItem} Valor Unid: {props.valorItem}R$ 
             <DeletButton onClick={props.onDeleteClick}>
-                Remove
                 <ImgBin src={binImg} alt=""/>
-                </DeletButton>
+            </DeletButton>
+            <AddButton onClick={props.addItem}>
+                + 1
+             </AddButton>
             </Item>
         </>
     )
