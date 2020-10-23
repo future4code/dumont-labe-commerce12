@@ -4,22 +4,23 @@ import TotalCarrinho from './TotalCarrinho';
 
 export const DivStyled = styled.div`
     display: ${props => props.display ? 'flex': 'none'};
-    background-color: white;
+    background-color: #F5F4F4;
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-start;
-    /* border: 1px solid black; */
+    position: fixed;
+    top:70px;
+    right: 0px;
     width:400px;
-    max-width: 400px;
     height: max-content;
-    align-self: flex-start;
-    border-radius: 5px;
-    /* box-shadow: 0px 0px 5px 0px; */
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+   
     
 `
 export const ListaStyled = styled.ul`
     list-style: none;
-    padding: 20px;
+    width: 100%;
 `
 export const Title = styled.h2`
     margin-left: 20px;

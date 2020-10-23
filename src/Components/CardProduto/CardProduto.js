@@ -9,17 +9,15 @@ const CardDiv = styled.div`
     background-color: white;
     align-items: center;
     justify-content: space-between;
-    /* border: 1px solid black; */
     border-radius: 4px;
-    /* box-shadow: 0px 0px 5px 0px; */
     padding: 30px;
     margin: 5px;
     width: 230px;
     height: max-content;
-    /* &:hover{
+     /* &:hover{
         width: 235px;
         height: 350px;
-    } */
+    }  */
 `
 const SimpleDiv = styled.div`
     display: flex;
@@ -49,6 +47,8 @@ const AddButton = styled.button`
     outline: none;
     border: none;
     border-radius: 4px;
+    justify-self: flex-end;
+    
     cursor: pointer;
     &:hover{
         background-color: tomato;
