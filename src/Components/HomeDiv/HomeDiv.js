@@ -2,18 +2,17 @@ import React from 'react';
 
 import styled from 'styled-components'
 
+//Div main que recebe os cards de produtos
 const DivProduts = styled.div`
 
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-flow: row wrap;
-    width: 80%;
-    height: 80vh;
+    width: 100%;
+    height: max-content;
     
 `
-
-
 
 export default function HomeDiv (props){
 

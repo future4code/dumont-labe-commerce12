@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import binImg from '../../Img/delete_outline-24px.svg'
 
 const Item = styled.li`
-    margin-bottom: 5px;
-    padding: 3px;
+    border-bottom: 1px solid black;
+    padding: 10px;
     display: flex;
     align-items: center;
-    width: max-content;
+    width: 90%;
 
 
 `
