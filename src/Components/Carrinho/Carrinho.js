@@ -16,6 +16,7 @@ export const DivStyled = styled.div`
     border-left: 1px solid black;
     border-bottom: 1px solid black;
    
+   
     
 `
 export const ListaStyled = styled.ul`

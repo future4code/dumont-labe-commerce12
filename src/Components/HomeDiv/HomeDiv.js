@@ -9,7 +9,7 @@ const DivProduts = styled.div`
     align-items: center;
     justify-content: center;
     flex-flow: row wrap;
-    width: 100%;
+    width: 100vw;
     height: max-content;
     
 `
