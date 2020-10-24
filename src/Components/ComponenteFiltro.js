@@ -10,6 +10,10 @@ const DivStyled2 = styled.nav`
     padding-left: 20px;
     padding-right: 60px;
     background-color: #F5F4F4;
+    @media screen and (max-width: 500px){
+        width: 80vw;
+        flex-flow: row wrap;
+    }
     
 `
 const MyInput = styled.input`
@@ -23,6 +27,10 @@ const MyInput = styled.input`
     border-radius: 5px;
     font-family: sans-serif;
     font-size: 14px;
+    @media screen and (max-width: 500px){
+        width: 100%;
+        flex-flow: row wrap;
+    }
 `
 const MyInputNumber = styled(MyInput)`
     width: 60px;
@@ -58,6 +66,10 @@ const DivColumn = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    @media screen and (max-width: 500px){
+        width: 100%;
+        flex-flow: row wrap;
+    }
 `
 
 function ComponenteFiltro(props){

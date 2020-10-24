@@ -10,10 +10,14 @@ const CardDiv = styled.div`
     align-items: center;
     justify-content: space-between;
     border-radius: 4px;
-    padding: 30px;
+    padding: 10px;
     margin: 5px;
     width: 230px;
-    height: max-content;
+    height: min-content;
+    @media screen and (max-width: 500px){
+        width: 40%;
+        flex-flow: row wrap;
+    }
      /* &:hover{
         width: 235px;
         height: 350px;
@@ -28,12 +32,17 @@ const SimpleDiv = styled.div`
 `
 
 const ItemImagem = styled.img`
-    margin-top: -30px;
+    
     margin-bottom: 5px;
     border-radius: 4px;
-    width: 280px;
+    width: 100%;
     height: 250px;
     border: 5px solid white;
+    @media screen and (max-width: 500px){
+        height: 125px;
+        
+        
+    }
 
 `
 const AddButton = styled.button`
@@ -43,7 +52,7 @@ const AddButton = styled.button`
     font-weight: bold;
     width: 90%;
     height: 30px;
-    margin: 10px;
+    
     outline: none;
     border: none;
     border-radius: 4px;
